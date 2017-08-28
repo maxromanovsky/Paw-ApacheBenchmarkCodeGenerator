@@ -7,7 +7,7 @@
     this.default_concurrency = 100;
 
     this.generateCommand = function(request) {
-      var command = "#" + request.name + "\n";
+      var command = "# " + request.name + "\n";
       command += "ab -c" + (self.options.concurrency || self.default_concurrency);
       command += " -n" + (self.options.request_count || self.default_request_count);
       command += " -m" + request.method;
@@ -43,12 +43,12 @@
       commands = requests.map(function(request) {
         return self.generateCommand(request);
       });
-      return commands.join('\n\n');
+      return commands.join('\n\n') + '\n';
     }
   }
 
   ApacheBenchmarkCodeGenerator.identifier = "com.maxromanovsky.PawExtensions.ApacheBenchmarkCodeGenerator";
-  ApacheBenchmarkCodeGenerator.title = "ab";
+  ApacheBenchmarkCodeGenerator.title = "ApacheBench";
   ApacheBenchmarkCodeGenerator.fileExtension = "sh";
   ApacheBenchmarkCodeGenerator.languageHighlighter = "bash";
   ApacheBenchmarkCodeGenerator.inputs = [
